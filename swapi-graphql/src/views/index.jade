@@ -1,7 +1,16 @@
 doctype html
 html
     head
+        title Welcome!
     body
         div(id="root")
-        h1 Hello User!
+        h1 Hello %username%!
+        p What I can?
+        ul
+            li
+                a(href="/graphql") GraphiQL
+            li
+                a(href="/web/images/doc.jpg") Sample Public Directory
+            li
+                a(href="/swapi") API to proxy (need parameters)
     script(src="/web/script/index.js")

@@ -5,7 +5,7 @@ import { Router, Route, browserHistory } from 'react-router'
 // ----------------------
 
 // Components
-import Pokedex from './components/Pokedex'
+import MainC from './components/MainC'
 // ----------------------
 
 // Apollo
@@ -26,8 +26,8 @@ const client = new ApolloClient({
 ReactDOM.render((
         <ApolloProvider client={client}>
             <Router history={browserHistory}>
-                <Route path='/' component={Pokedex} />
-                <Route path='/pd' component={Pokedex} />
+                <Route path='/' component={MainC} />
+                <Route path='/pd' component={MainC} />
             </Router>
         </ApolloProvider>
     ),

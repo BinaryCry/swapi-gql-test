@@ -1,16 +1,12 @@
 import React from 'react'
-import styled from 'styled-components'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 
-const Title = styled.div`
-  color: #7F7F7F;
-  font-size: 32px;
-  font-weight: 300;
-`;
+// Helpful components
+import SelectC from './SelectC';
 
-// Component
-class Pokedex extends React.Component {
+// Main Component
+class MainC extends React.Component {
 
     constructor(props) {
         super(props);
@@ -39,8 +35,8 @@ class Pokedex extends React.Component {
         }
 
         return (
-            <div className='w-100 bg-light-gray min-vh-100'>
-                <Title className='tc pa5'>
+            <div className="">
+                <div className="">
                     <div>Name: { this.props.data.person.name }</div>
                     <div>Gender: { this.props.data.person.gender }</div>
                     <div>Birth Year { this.props.data.person.birthYear }</div>
@@ -49,7 +45,7 @@ class Pokedex extends React.Component {
                         <p>StarShips</p>
                         {
                             this.props.data.person.starshipConnection.starships.map( item => {
-                                return <div> { item.name } </div>
+                                return <div key={item.id} > { item.name } </div>
                             } )
                         }
                     </div>
@@ -57,12 +53,13 @@ class Pokedex extends React.Component {
                         <p>Films</p>
                         {
                             this.props.data.person.filmConnection.films.map( item => {
-                                return <div> { item.title } </div>
+                                return <div key={item.id} > { item.title } </div>
                             } )
                         }
                     </div>
 
-                </Title>
+                     <SelectC />
+                </div>
             </div>
         )
     }
@@ -79,11 +76,13 @@ const Query = gql
         starshipConnection {
           starships {
             name
+            id
           }
         }
         filmConnection {
           films {
             title
+            id
           }
         }
       }
@@ -91,6 +90,6 @@ const Query = gql
   
 `;
 
-const PokedexWithData = graphql(Query)(Pokedex);
+const MainCWithData = graphql(Query)(MainC);
 
-export default PokedexWithData
+export default MainCWithData
