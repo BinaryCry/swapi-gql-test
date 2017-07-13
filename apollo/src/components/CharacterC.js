@@ -11,11 +11,11 @@ class CharacterC extends React.Component {
 
         return (
             <div >
-                {/*{*/}
-                    {/*JSON.parse( decodeURI(this.props.filmData) ).characters.map( item => {*/}
-                        {/*return item*/}
-                    {/*} )*/}
-                {/*}*/}
+                {
+                    JSON.parse( decodeURI(this.props.filmData) ).characters.map( item => {
+                        return item
+                    } )
+                }
             </div>
         )
     }

@@ -16,10 +16,7 @@ class SelectC extends React.Component {
     getChars(e) {
         // Proxy to SWAPI
 
-        console.log(e.target.value)
-
-        // request('http://swapi.co/api/films/'+ e.target.value + '/', (error, response, body) => {
-        request('http://localhost:4000/swapi', (error, response, body) => {
+        request('http://localhost:4000/swapi/?filmID='+e.target.value, (error, response, body) => {
             if (!error && response.statusCode == 200) {
                 ReactDOM.render( <CharacterC filmData={ body }  />, document.getElementById('charsBox'));
             }
