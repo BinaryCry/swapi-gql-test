@@ -16,13 +16,11 @@ html {
 *, *:before, *:after {
   box-sizing: inherit;
 }
-
 .centerBox {
   width: 50%;
   margin: 0 auto;
   text-align: center;
 }
-
 #logo {
   width: 50%;
   margin-bottom: 3.5em;
@@ -32,8 +30,15 @@ html {
 
 }
 .filterBox .filterBoxHeader {
-
+  font-weight: 600;
+  font-size: 1.5em;
+  line-height: 2em;
 }
 .filterBox select {
+  height: 2.5em;
+  cursor: pointer;
+  min-width: 250px;
+}
+#charsBox {
 
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import request from 'request'
 
 // Helpful components
 import CharacterC from './CharacterC';
@@ -10,15 +11,32 @@ class SelectC extends React.Component {
         super(props);
         this.state = {};
     }
+
+    // Render on event
+    getChars(e) {
+        // Proxy to SWAPI
+
+        console.log(e.target.value)
+
+        // request('http://swapi.co/api/films/'+ e.target.value + '/', (error, response, body) => {
+        request('http://localhost:4000/swapi', (error, response, body) => {
+            if (!error && response.statusCode == 200) {
+                ReactDOM.render( <CharacterC filmData={ body }  />, document.getElementById('charsBox'));
+            }
+        });
+
+
+    }
+
     render() {
         return (
             <div className="filterBox centerBox">
                 <div className="filterBoxHeader">Choose the film</div>
-                <select>
+                <select onChange={ this.getChars }>
                     <option disabled selected style={{ display: "none"  }}></option>
                     {
                         this.props.films.map( item => {
-                            return <option key={ item.id } value={ item.id }>{ item.title }</option>
+                            return <option key={ item.id } value={ new Buffer( item.id, 'base64').toString('ascii').split(':')[1] }>{ item.title }, ep: { item.episodeID }</option>
                         } )
                     }
                 </select>
@@ -26,9 +44,5 @@ class SelectC extends React.Component {
         )
     }
 }
-
-
-// Render on event
-// ReactDOM.render( <CharacterC data={} />, document.getElementById('root1'));
 
 export default SelectC;

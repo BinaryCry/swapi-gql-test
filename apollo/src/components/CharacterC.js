@@ -6,7 +6,18 @@ class CharacterC extends React.Component {
         this.state = {};
     }
     render() {
-        return <div>111</div>
+
+        console.log( JSON.parse( decodeURI(this.props.filmData) ) )
+
+        return (
+            <div >
+                {/*{*/}
+                    {/*JSON.parse( decodeURI(this.props.filmData) ).characters.map( item => {*/}
+                        {/*return item*/}
+                    {/*} )*/}
+                {/*}*/}
+            </div>
+        )
     }
 }
 

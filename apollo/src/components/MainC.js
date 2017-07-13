@@ -22,9 +22,6 @@ class MainC extends React.Component {
     };
 
     render () {
-
-        console.log(this.props.data)
-
         if (this.props.data.loading) {
             return (<div>Loading</div>)
         }
@@ -37,6 +34,7 @@ class MainC extends React.Component {
         return (
             <div>
                 <SelectC films={ this.props.data.allFilms.films } />
+                <div id="charsBox"></div>
             </div>
         )
     }
@@ -50,6 +48,7 @@ const AllFilms = gql
         films {
           id
           title
+          episodeID
         }
       }
   }
