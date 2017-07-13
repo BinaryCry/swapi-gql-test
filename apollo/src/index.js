@@ -27,7 +27,6 @@ ReactDOM.render((
         <ApolloProvider client={client}>
             <Router history={browserHistory}>
                 <Route path='/' component={MainC} />
-                <Route path='/pd' component={MainC} />
             </Router>
         </ApolloProvider>
     ),

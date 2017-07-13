@@ -17,7 +17,7 @@ class MainC extends React.Component {
         data: React.PropTypes.shape({
             loading: React.PropTypes.bool,
             error: React.PropTypes.object,
-            person: React.PropTypes.object,
+            films: React.PropTypes.object,
         }).isRequired,
     };
 
@@ -35,61 +35,27 @@ class MainC extends React.Component {
         }
 
         return (
-            <div className="">
-                <div className="">
-                    <div>Name: { this.props.data.person.name }</div>
-                    <div>Gender: { this.props.data.person.gender }</div>
-                    <div>Birth Year { this.props.data.person.birthYear }</div>
-
-                    <div>
-                        <p>StarShips</p>
-                        {
-                            this.props.data.person.starshipConnection.starships.map( item => {
-                                return <div key={item.id} > { item.name } </div>
-                            } )
-                        }
-                    </div>
-                    <div>
-                        <p>Films</p>
-                        {
-                            this.props.data.person.filmConnection.films.map( item => {
-                                return <div key={item.id} > { item.title } </div>
-                            } )
-                        }
-                    </div>
-
-                     <SelectC />
-                </div>
+            <div>
+                <SelectC films={ this.props.data.allFilms.films } />
             </div>
         )
     }
 }
 
 // Query
-const Query = gql
+const AllFilms = gql
     `
-  query Luke {
-      person(id: "cGVvcGxlOjE0") {
-        name
-        gender
-        birthYear
-        starshipConnection {
-          starships {
-            name
-            id
-          }
-        }
-        filmConnection {
-          films {
-            title
-            id
-          }
+  query Films {
+      allFilms {
+        films {
+          id
+          title
         }
       }
-    }
+  }
   
 `;
 
-const MainCWithData = graphql(Query)(MainC);
+const MainCWithData = graphql(AllFilms)(MainC);
 
 export default MainCWithData
