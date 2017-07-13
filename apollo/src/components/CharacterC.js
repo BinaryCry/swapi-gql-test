@@ -13,12 +13,15 @@ class CharacterC extends React.Component {
             <div >
                 {
                     this.state.data.map( item => {
-                        console.log( __obj.state.data )
                         return (
-                            <div>
-                                {
-                                    item.name
-                                }
+                            <div className="charBoxItem">
+                                <img  className="charBoxItemAvatar" src="/img/characters/none.jpg" alt="avatar"/>
+                                <p className="charBoxItemHeader">
+                                    { item.name }
+                                </p>
+                                <div className="chatBoxItemInfo">
+
+                                </div>
                             </div>
                         );
                     } )
@@ -42,9 +45,6 @@ class CharacterC extends React.Component {
                     } )
                 }
             });
-
-            // console.log( __obj.state )
-
         }
     }
 }
