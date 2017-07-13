@@ -16,13 +16,14 @@ class SelectC extends React.Component {
     getChars(e) {
         // Proxy to SWAPI
 
-        request('http://localhost:4000/swapi/?filmID='+e.target.value, (error, response, body) => {
+        let uri = `http://localhost:4000/swapi/?type=film&id=${e.target.value}`;
+
+        request(uri, (error, response, body) => {
             if (!error && response.statusCode == 200) {
-                ReactDOM.render( <CharacterC filmData={ body }  />, document.getElementById('charsBox'));
+                document.getElementById('charsBox').innerHTML = '';
+                ReactDOM.render( <CharacterC chars={ JSON.parse( decodeURI(body) ).characters } />, document.getElementById('charsBox'));
             }
         });
-
-
     }
 
     render() {
